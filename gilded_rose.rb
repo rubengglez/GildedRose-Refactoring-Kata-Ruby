@@ -36,12 +36,12 @@ class GildedRose
       end
       if item.sell_in <= 0
         if item.name != AGED_BRIE
-          if item.name != BACKSTAGE
+          if item.name == BACKSTAGE
+            item.quality = 0
+          else
             if item.quality > 0
               item.quality = item.quality - 1
             end
-          else
-            item.quality = 0
           end
         else
           if item.quality < 50
