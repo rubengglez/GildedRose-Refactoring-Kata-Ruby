@@ -14,8 +14,12 @@ class GildedRose
       next if sulfuras?(item)
 
       if item.name != AGED_BRIE and item.name != BACKSTAGE
-        if item.quality > 0
+        if item.sell_in > 0
           item.quality = item.quality - 1
+        else
+          if item.quality > 0
+            item.quality = item.quality - 2
+          end
         end
       else
         if item.quality < 50
@@ -36,10 +40,6 @@ class GildedRose
         if item.name != AGED_BRIE
           if item.name == BACKSTAGE
             item.quality = 0
-          else
-            if item.quality > 0
-              item.quality = item.quality - 1
-            end
           end
         else
           item.quality = [item.quality + 1, 50].min
