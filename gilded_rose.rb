@@ -17,9 +17,7 @@ class GildedRose
         if item.sell_in > 0
           item.quality = item.quality - 1
         else
-          if item.quality > 0
-            item.quality = item.quality - 2
-          end
+          item.quality = [item.quality - 2, 0].max
         end
       else
         if item.quality < 50
