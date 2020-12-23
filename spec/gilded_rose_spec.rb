@@ -65,10 +65,18 @@ describe GildedRose do
     end
 
     context 'Sufuras never has to be sold or decreases in Quality' do
-      let(:item) { Item.new(SULFURAS, 5, 80) }
+      let(:item) { Item.new(SULFURAS, 5, 50) }
       it do
-        expect(item.quality).to eq(80)
+        expect(item.quality).to eq(50)
         expect(item.sell_in).to eq(5)
+      end
+    end
+
+    context "Sufuras never has to be sold or decreases in Quality" do
+      let(:item) { Item.new(SULFURAS, 0, 50) }
+      it do
+        expect(item.quality).to eq(50)
+        expect(item.sell_in).to eq(0)
       end
     end
 
@@ -107,7 +115,7 @@ describe GildedRose do
       end
     end
 
-    context 'Backstage qualitu is 0 when the day comes' do
+    context 'Backstage quality is 0 when the day comes' do
       let(:item) { Item.new(BACKSTAGE, 0, 20) }
       it do
         expect(item.quality).to eq(0)
@@ -123,7 +131,7 @@ describe GildedRose do
 
     context "Conjured decrease its quality by 2" do
     let(:item) { Item.new(CONJURED, 4, 49) }
-      it do
+      xit do
         expect(item.quality).to eq(47)
       end
     end
