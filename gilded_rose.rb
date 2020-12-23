@@ -14,11 +14,8 @@ class GildedRose
       next if sulfuras?(item)
 
       if item.name != AGED_BRIE and item.name != BACKSTAGE
-        if item.sell_in > 0
-          item.quality = item.quality - 1
-        else
-          item.quality = [item.quality - 2, 0].max
-        end
+        decrease_by = item.sell_in <= 0 ? 2 : 1
+        item.quality = [item.quality - decrease_by, 0].max
       elsif item.name == BACKSTAGE
         if item.sell_in <= 0
           item.quality = 0
