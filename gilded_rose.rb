@@ -20,17 +20,18 @@ class GildedRose
           item.quality = [item.quality - 2, 0].max
         end
       else
-        item.quality = item.quality + 1
         if item.name == BACKSTAGE
-          if item.sell_in < 11
-            item.quality = [item.quality + 1, 50].min
-          end
-          if item.sell_in < 6
-            item.quality = [item.quality + 1, 50].min
-          end
           if item.sell_in <= 0
             item.quality = 0
+          elsif item.sell_in < 6
+            item.quality = [item.quality + 3, 50].min
+          elsif item.sell_in < 11
+            item.quality = [item.quality + 2, 50].min
+          else
+            item.quality = [item.quality + 1, 50].min
           end
+        else
+          item.quality = [item.quality + 1, 50].min
         end
       end
       if item.sell_in <= 0 && item.name == AGED_BRIE
