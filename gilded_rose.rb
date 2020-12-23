@@ -13,9 +13,9 @@ class GildedRose
     @items.each do |item|
       next if sulfuras?(item)
 
-      if item.name != AGED_BRIE and item.name != BACKSTAGE
-        decrease_by = item.sell_in <= 0 ? 2 : 1
-        item.quality = [item.quality - decrease_by, 0].max
+      if item.name == AGED_BRIE
+        increase_by = item.sell_in <= 0 ? 2 : 1
+        item.quality = [item.quality + increase_by, 50].min
       elsif item.name == BACKSTAGE
         if item.sell_in <= 0
           item.quality = 0
@@ -27,8 +27,8 @@ class GildedRose
           item.quality = [item.quality + 1, 50].min
         end
       else
-        increase_by = item.sell_in <= 0 ? 2 : 1
-        item.quality = [item.quality + increase_by, 50].min
+        decrease_by = item.sell_in <= 0 ? 2 : 1
+        item.quality = [item.quality - decrease_by, 0].max
       end
     end
   end
