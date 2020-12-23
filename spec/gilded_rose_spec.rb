@@ -131,7 +131,7 @@ describe GildedRose do
 
     context "Conjured decrease its quality by 2" do
     let(:item) { Item.new(CONJURED, 4, 49) }
-      xit do
+      it do
         expect(item.quality).to eq(47)
       end
     end

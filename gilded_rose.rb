@@ -16,6 +16,8 @@ class GildedRose
       if item.name == AGED_BRIE
         increase_by = item.sell_in <= 0 ? 2 : 1
         item.quality = [item.quality + increase_by, 50].min
+      elsif item.name == CONJURED
+        item.quality = [item.quality - 2, 0].max
       elsif item.name == BACKSTAGE
         if item.sell_in <= 0
           item.quality = 0
