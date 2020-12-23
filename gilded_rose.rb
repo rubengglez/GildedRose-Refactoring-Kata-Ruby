@@ -1,44 +1,13 @@
-AGED_BRIE = 'Aged Brie'.freeze
-SULFURAS = 'Sulfuras, Hand of Ragnaros'.freeze
-BACKSTAGE = 'Backstage passes to a TAFKAL80ETC concert'.freeze
-CONJURED = 'Conjured'.freeze
+require_relative './factory_item'
 
 class GildedRose
 
   def initialize(items)
-    @items = items
+    @items = items.map { |item| FactoryItem.create(item) }
   end
 
   def update_quality()
-    @items.each do |item|
-      next if sulfuras?(item)
-
-      if item.name == AGED_BRIE
-        increase_by = item.sell_in <= 0 ? 2 : 1
-        item.quality = [item.quality + increase_by, 50].min
-      elsif item.name == CONJURED
-        item.quality = [item.quality - 2, 0].max
-      elsif item.name == BACKSTAGE
-        if item.sell_in <= 0
-          item.quality = 0
-        elsif item.sell_in < 6
-          item.quality = [item.quality + 3, 50].min
-        elsif item.sell_in < 11
-          item.quality = [item.quality + 2, 50].min
-        else
-          item.quality = [item.quality + 1, 50].min
-        end
-      else
-        decrease_by = item.sell_in <= 0 ? 2 : 1
-        item.quality = [item.quality - decrease_by, 0].max
-      end
-    end
-  end
-
-  private
-
-  def sulfuras?(item)
-    item.name == SULFURAS
+    @items.each(&:update_quality)
   end
 end
 
