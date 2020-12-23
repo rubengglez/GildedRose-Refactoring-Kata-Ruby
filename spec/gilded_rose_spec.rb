@@ -36,7 +36,7 @@ describe GildedRose do
       end
     end
 
-    context 'when the sell by date has passed and quality is zero, quality doesnt change' do
+    context 'when the sell by date has passed and quality is one, quality has to be zero' do
       let(:item) { Item.new("foo", 0, 0) }
       it do
         expect(item.quality).to eq(0)
