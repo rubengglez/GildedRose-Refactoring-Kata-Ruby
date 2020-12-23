@@ -66,17 +66,17 @@ describe GildedRose do
     end
 
     context 'Sufuras never has to be sold or decreases in Quality' do
-      let(:item) { Item.new(FactoryItem::SULFURAS, 5, 50) }
+      let(:item) { Item.new(FactoryItem::SULFURAS, 5, 80) }
       it do
-        expect(item.quality).to eq(50)
+        expect(item.quality).to eq(80)
         expect(item.sell_in).to eq(5)
       end
     end
 
     context "Sufuras never has to be sold or decreases in Quality" do
-      let(:item) { Item.new(FactoryItem::SULFURAS, 0, 50) }
+      let(:item) { Item.new(FactoryItem::SULFURAS, 0, 80) }
       it do
-        expect(item.quality).to eq(50)
+        expect(item.quality).to eq(80)
         expect(item.sell_in).to eq(0)
       end
     end
