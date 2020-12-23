@@ -23,9 +23,7 @@ class GildedRose
         item.quality = item.quality + 1
         if item.name == BACKSTAGE
           if item.sell_in < 11
-            if item.quality < 50
-              item.quality = [item.quality + 1, 50].min
-            end
+            item.quality = [item.quality + 1, 50].min
           end
           if item.sell_in < 6
             item.quality = [item.quality + 1, 50].min
