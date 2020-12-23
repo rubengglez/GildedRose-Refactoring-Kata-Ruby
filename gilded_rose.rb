@@ -30,13 +30,13 @@ class GildedRose
           if item.sell_in < 6
             item.quality = [item.quality + 1, 50].min
           end
+          if item.sell_in <= 0
+            item.quality = 0
+          end
         end
       end
       if item.sell_in <= 0
         if item.name != AGED_BRIE
-          if item.name == BACKSTAGE
-            item.quality = 0
-          end
         else
           item.quality = [item.quality + 1, 50].min
         end
