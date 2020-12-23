@@ -44,9 +44,7 @@ class GildedRose
             end
           end
         else
-          if item.quality < 50
-            item.quality = item.quality + 1
-          end
+          item.quality = [item.quality + 1, 50].min
         end
       end
     end
