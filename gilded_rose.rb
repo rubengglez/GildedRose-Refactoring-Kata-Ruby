@@ -34,8 +34,7 @@ class GildedRose
           end
         end
       end
-      item.sell_in = item.sell_in - 1
-      if item.sell_in < 0
+      if item.sell_in <= 0
         if item.name != AGED_BRIE
           if item.name != BACKSTAGE
             if item.quality > 0
